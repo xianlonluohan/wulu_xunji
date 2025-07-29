@@ -80,59 +80,58 @@ namespace emakefun {
         }
 
         /**
-        * Set the high threshold for a specific channel
-        * @param channel The sensor channel (0-4)
+        * Set the high threshold for sensors
+        * @param index The sensor index (0-4)
         * @param threshold The threshold value (0-1023)
         */
-        //% block="$this set high threshold for channel $channel to $threshold"
+        //% block="$this set high threshold for sensor $index to $threshold"
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
-        //% channel.min=0
-        //% channel.max=4
+        //% index.min=0
+        //% index.max=4
         //% threshold.min=0
         //% threshold.max=1023
         //% weight=90
-        SetHighThreshold(channel: number, threshold: number): void {
+        SetHighThreshold(index: number, threshold: number): void {
             // Convert threshold to little-endian bytes
             const lowByte = threshold & 0xFF;
             const highByte = (threshold >> 8) & 0xFF;
-            this.I2cWrite(kMemoryAddressHighThresholds + (channel * 2), [lowByte, highByte]);
+            this.I2cWrite(kMemoryAddressHighThresholds + (index * 2), [lowByte, highByte]);
         }
 
 
         /**
-         * Set the low threshold for a specific channel
-         * @param channel The sensor channel (0-4)
+         * Set the low threshold for sensors
+         * @param index The sensor index (0-4)
          * @param threshold The threshold value (0-1023)
          */
-        //% block="$this set low threshold for channel $channel to $threshold"
+        //% block="$this set low threshold for sensor $index to $threshold"
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
-        //% channel.min=0
-        //% channel.max=4
+        //% index.min=0
+        //% index.max=4
         //% threshold.min=0
         //% threshold.max=1023
         //% weight=89
-        SetLowThreshold(channel: number, threshold: number): void {
+        SetLowThreshold(index: number, threshold: number): void {
             // Convert threshold to little-endian bytes
             const lowByte = threshold & 0xFF;
             const highByte = (threshold >> 8) & 0xFF;
-            this.I2cWrite(kMemoryAddressLowThresholds + (channel * 2), [lowByte, highByte]);
+            this.I2cWrite(kMemoryAddressLowThresholds + (index * 2), [lowByte, highByte]);
         }
 
         /**
-         * Get the analog value for a specific channel
-         * @param channel The sensor channel (0-4)
+         * Read analog value of sensors
+         * @param index The sensor index (0-4)
          */
-        //% block="$this get the analog value for channel $channel"
+        //% block="$this get the analog value for channel $index"
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
-        //% channel.min=0
-        //% channel.max=4
+        //% index.min=0
+        //% index.max=4
         //% weight=85
-        AnalogValue(channel: number): number {
-            const buffer = this.I2cRead(kMemoryAddressAnalogValues + (channel * 2), 2);
-            // Combine bytes (little-endian)
+        AnalogValue(index: number): number {
+            const buffer = this.I2cRead(kMemoryAddressAnalogValues + (index * 2), 2);
             return (buffer.getUint8(1) << 8) | buffer.getUint8(0);
         }
 
@@ -157,18 +156,18 @@ namespace emakefun {
         }
 
         /**
-         * Get the digital value for a specific channel
-         * @param channel The sensor channel (0-4)
+         * Read digital value of sensors
+         * @param index The sensor index (0-4)
          */
-        //% block="$this get the digital value for channel $channel"
+        //% block="$this get the digital value for channel $index"
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
-        //% channel.min=0
-        //% channel.max=4
+        //% index.min=0
+        //% index.max=4
         //% weight=80
-        DigitalValue(channel: number): number {
+        DigitalValue(index: number): number {
             const byte = this.I2cRead(kMemoryAddressDigitalValues, 1).getUint8(0);
-            return (byte >> channel) & 0x01;
+            return (byte >> index) & 0x01;
         }
 
         /**
