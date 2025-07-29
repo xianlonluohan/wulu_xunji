@@ -11,8 +11,8 @@
         "README.md",
         "main.blocks",
         "main.ts",
-        "_locales/zh/five_line_tracker_v3_jsdoc_strings.json",
-        "_locales/zh/five_line_tracker_v3_strings.json"
+        "_locales/zh/FiveLineTrackerV3-five-line-tracker-v3-jsdoc-strings.json",
+        "_locales/zh/FiveLineTrackerV3-five-line-tracker-v3-strings.json"
     ],
     "testFiles": [
         "test.ts"
