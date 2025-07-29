@@ -9,6 +9,6 @@
     "emakefun.FiveLineTracker.DigitalValue|block": "%this 读取传感器探头%index号的数字值",
     "emakefun.FiveLineTracker.AllDigitalValues|block": "%this 读取传感器所有探头的数字值",
     "emakefun|block": "emakefun",
-    "{id:category}Emakefun": "Emakefun",
+    "{id:category}Emakefun": "emakefun",
     "{id:subcategory}FiveLineTrackerV3": "五路寻迹模块"
 }

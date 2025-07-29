@@ -1,5 +1,5 @@
-//%block="Emakefun"
-declare namespace emakefun {
+//%block="emakefun"
+namespace emakefun {
     // I2C address of the Five Line Tracker module
     const kDefaultI2cAddress = 0x50;
 
