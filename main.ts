@@ -20,7 +20,7 @@ namespace emakefun {
      * @return The new FiveLineTracker object
     */
     //% block="create five line tracker with I2C address $i2c_address"
-    //% subcategory="FiveLineTracker"
+    //% subcategory="FiveLineTrackerV3"
     //% blockSetVariable=five_line_tracker
     //% i2c_address.defl=0x50
     //% weight=100
@@ -61,7 +61,7 @@ namespace emakefun {
          * Get the device ID
          */
         //% block="$this get the device ID"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=95
         GetDeviceId(): number {
@@ -72,7 +72,7 @@ namespace emakefun {
          * Get the firmware version
          */
         //% block="$this get the firmware version"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=94
         GetFirmwareVersion(): number {
@@ -85,7 +85,7 @@ namespace emakefun {
         * @param threshold The threshold value (0-1023)
         */
         //% block="$this set high threshold for channel $channel to $threshold"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% channel.min=0
         //% channel.max=4
@@ -106,7 +106,7 @@ namespace emakefun {
          * @param threshold The threshold value (0-1023)
          */
         //% block="$this set low threshold for channel $channel to $threshold"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% channel.min=0
         //% channel.max=4
@@ -125,7 +125,7 @@ namespace emakefun {
          * @param channel The sensor channel (0-4)
          */
         //% block="$this get the analog value for channel $channel"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% channel.min=0
         //% channel.max=4
@@ -140,7 +140,7 @@ namespace emakefun {
         * Get all analog values as an array
         */
         //% block="$this get all analog values"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=84
         AllAnalogValues(): number[] {
@@ -161,7 +161,7 @@ namespace emakefun {
          * @param channel The sensor channel (0-4)
          */
         //% block="$this get the digital value for channel $channel"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% channel.min=0
         //% channel.max=4
@@ -176,7 +176,7 @@ namespace emakefun {
          * 
          */
         //% block="$this get all digital values"
-        //% subcategory="FiveLineTracker"
+        //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=79
         AllDigitalValues(): number {

@@ -10,5 +10,5 @@
     "emakefun.FiveLineTracker.AllDigitalValues|block": "%this 读取传感器所有通道的数字值",
     "emakefun|block": "emakefun",
     "{id:category}Emakefun": "Emakefun",
-    "{id:subcategory}FiveLineTracker": "五路寻迹模块"
+    "{id:subcategory}FiveLineTrackerV3": "五路寻迹模块"
 }
