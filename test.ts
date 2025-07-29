@@ -1,3 +1,4 @@
+/// <reference path="main.ts" />
 let tracker = emakefun.CreateFiveLineTracker(80)
 basic.forever(function () {
     serial.writeString('digital values:')
