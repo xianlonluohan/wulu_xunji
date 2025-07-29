@@ -1,37 +1,25 @@
-// Basic test for five line tracker
-input.onButtonPressed(Button.A, function () {
-    let tracker = emakefun.createFiveLineTracker()
-    basic.showString("ID: " + tracker.deviceId())
-    basic.showString("VER: " + tracker.firmwareVersion())
-})
-
-input.onButtonPressed(Button.B, function () {
-    let tracker = emakefun.createFiveLineTracker()
-
-    // Set thresholds
-    for (let i = 0; i < 5; i++) {
-        tracker.setHighThreshold(i, 850)
-        tracker.setLowThreshold(i, 800)
-    }
-
-    // Read values
-    let values = tracker.allAnalogValues()
-    for (let i = 0; i < 5; i++) {
-        serial.writeLine("Sensor " + i + ": " + values[i])
-    }
-
-    // Show line position
-    basic.showNumber(tracker.linePosition())
-})
-
+let five_line_tracker = emakefun.CreateFiveLineTracker(80)
 basic.forever(function () {
-    let tracker = emakefun.createFiveLineTracker()
-
-    if (tracker.centerDetected()) {
-        basic.showIcon(IconNames.Yes)
-    } else {
-        basic.showIcon(IconNames.No)
-    }
-
-    basic.pause(200)
+    serial.writeString('digital values:')
+    serial.writeNumber(five_line_tracker.DigitalValue(0))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.DigitalValue(1))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.DigitalValue(2))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.DigitalValue(3))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.DigitalValue(4))
+    serial.writeString(', analog values:')
+    serial.writeNumber(five_line_tracker.AnalogValue(0))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.AnalogValue(1))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.AnalogValue(2))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.AnalogValue(3))
+    serial.writeString(', ')
+    serial.writeNumber(five_line_tracker.AnalogValue(4))
+    serial.writeLine('')
+    basic.pause(100)
 })

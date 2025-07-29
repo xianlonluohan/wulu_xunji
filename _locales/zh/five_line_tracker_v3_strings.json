@@ -1,5 +1,5 @@
 {
-    "emakefun.CreateFiveLineTracker|block": "创建五路寻迹传感器 I2C地址 $i2c_address",
+    "emakefun.CreateFiveLineTracker|block": "创建五路寻迹传模块实例 I2C地址 $i2c_address",
     "emakefun.FiveLineTracker.GetDeviceId|block": "%this 获取设备ID",
     "emakefun.FiveLineTracker.GetFirmwareVersion|block": "%this 获取固件版本",
     "emakefun.FiveLineTracker.SetHighThreshold|block": "%this 设置高阈值 通道 %channel 为 %threshold",
@@ -8,7 +8,7 @@
     "emakefun.FiveLineTracker.AllAnalogValues|block": "%this 读取传感器所有通道的模拟值",
     "emakefun.FiveLineTracker.DigitalValue|block": "%this 读取器传感器通道 %channel的数字值值",
     "emakefun.FiveLineTracker.AllDigitalValues|block": "%this 读取传感器所有通道的数字值",
-    "emakefun|block": "Emakefun",
+    "emakefun|block": "emakefun",
     "{id:category}Emakefun": "Emakefun",
-    "{id:subcategory}FiveLineTracker": "五路寻迹传感器"
+    "{id:subcategory}FiveLineTracker": "五路寻迹模块"
 }
