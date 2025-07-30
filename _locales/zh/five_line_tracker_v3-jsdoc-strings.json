@@ -1,12 +1,10 @@
 {
-    "emakefun.FiveLineTracker.GetDeviceId": "获取设备ID",
-    "emakefun.FiveLineTracker.GetFirmwareVersion": "获取固件版本",
-    "emakefun.FiveLineTracker.SetHighThreshold": "设置高阈值",
-    "emakefun.FiveLineTracker.SetLowThreshold": "设置低阈值",
-    "emakefun.FiveLineTracker.AnalogValue": "获取模拟值",
-    "emakefun.FiveLineTracker.AllAnalogValues": "获取所有模拟值",
-    "emakefun.FiveLineTracker.DigitalValue": "获取数字值",
-    "emakefun.FiveLineTracker.AllDigitalValues": "获取所有数字值",
-    "emakefun.CreateFiveLineTracker": "创建五路寻迹模块实例",
-    "emakefun.CreateFiveLineTracker|param|i2c_address": "I2C地址 (默认0x50)"
+    "emakefun.FiveLineTracker.getDeviceId": "获取设备ID",
+    "emakefun.FiveLineTracker.getFirmwareVersion": "获取固件版本",
+    "emakefun.FiveLineTracker.setHighThreshold": "设置高阈值",
+    "emakefun.FiveLineTracker.setLowThreshold": "设置低阈值",
+    "emakefun.FiveLineTracker.analogValue": "获取模拟值",
+    "emakefun.FiveLineTracker.digitalValue": "获取数字值",
+    "emakefun.createFiveLineTracker": "创建五路寻迹模块实例",
+    "emakefun.createFiveLineTracker|param|i2c_address": "I2C地址 (默认0x50)"
 }
