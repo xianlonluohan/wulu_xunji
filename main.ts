@@ -80,7 +80,10 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=90
         setHighThreshold(index: number, threshold: number): void {
-            pins.i2cWriteBuffer(this.i2c_address, pins.pack("<BH", [FiveLineTracker.kMemoryAddressHighThresholds + (index * 2), threshold]));
+            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTracker.kMemoryAddressHighThresholds + index * 2, threshold]));
+            // const register = FiveLineTracker.kMemoryAddressHighThresholds + (index * 2);
+            // const buffer = pins.packBuffer("u8 u16", [register, threshold]);
+            // pins.i2cWriteBuffer(this.i2c_address, buffer);
         }
 
 
@@ -98,7 +101,12 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=89
         setLowThreshold(index: number, threshold: number): void {
-            pins.i2cWriteBuffer(this.i2c_address, pins.pack("<BH", [FiveLineTracker.kMemoryAddressLowThresholds + (index * 2), threshold]));
+            // pins.i2cWriteBuffer(this.i2c_address, pins.pack("<BH", [FiveLineTracker.kMemoryAddressLowThresholds + (index * 2), threshold]));
+            // const register = FiveLineTracker.kMemoryAddressLowThresholds + (index * 2);
+            // const buffer = pins.packBuffer("u8 u16", [register, threshold]);
+            // pins.i2cWriteBuffer(this.i2c_address, buffer);
+            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTracker.kMemoryAddressLowThresholds + index * 2, threshold]));
+
         }
 
         /**
