@@ -24,7 +24,7 @@ namespace emakefun {
     //% blockSetVariable=five_line_tracker
     //% i2c_address.defl=0x50
     //% weight=100
-    export function createFiveLineTracker(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
+    export function CreateFiveLineTracker(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
         return new FiveLineTracker(i2c_address);
     }
 
@@ -43,7 +43,7 @@ namespace emakefun {
             this.i2c_address = i2c_address;
         }
 
-        i2cRead(register: number, length: number): Buffer {
+        I2cRead(register: number, length: number): Buffer {
             pins.i2cWriteNumber(this.i2c_address, register, NumberFormat.UInt8LE);
             return pins.i2cReadBuffer(this.i2c_address, length);
         }
@@ -56,8 +56,8 @@ namespace emakefun {
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=95
-        getDeviceId(): number {
-            return this.i2cRead(kMemoryAddressDeviceId, 1).getUint8(0);
+        GetDeviceId(): number {
+            return this.I2cRead(kMemoryAddressDeviceId, 1).getUint8(0);
         }
 
         /**
@@ -67,8 +67,8 @@ namespace emakefun {
         //% subcategory="FiveLineTrackerV3"
         //% this.defl=five_line_tracker
         //% weight=94
-        getFirmwareVersion(): number {
-            return this.i2cRead(kMemoryAddressVersion, 1).getUint8(0);
+        GetFirmwareVersion(): number {
+            return this.I2cRead(kMemoryAddressVersion, 1).getUint8(0);
         }
 
         /**
@@ -84,7 +84,7 @@ namespace emakefun {
         //% threshold.min=0
         //% threshold.max=1023
         //% weight=90
-        setHighThreshold(index: number, threshold: number): void {
+        SetHighThreshold(index: number, threshold: number): void {
             const buffer = pins.createBuffer(3);
             buffer.setUint8(0, kMemoryAddressHighThresholds + (index * 2)); // 寄存器地址
             buffer.setUint8(1, threshold & 0xFF);  // 低字节
@@ -107,7 +107,7 @@ namespace emakefun {
         //% threshold.min=0
         //% threshold.max=1023
         //% weight=89
-        setLowThreshold(index: number, threshold: number): void {
+        SetLowThreshold(index: number, threshold: number): void {
             const buffer = pins.createBuffer(3);
             buffer.setUint8(0, kMemoryAddressLowThresholds + (index * 2)); // 寄存器地址
             buffer.setUint8(1, threshold & 0xFF);  // 低字节
@@ -125,8 +125,8 @@ namespace emakefun {
         //% index.min=0
         //% index.max=4
         //% weight=85
-        analogValue(index: number): number {
-            const buffer = this.i2cRead(kMemoryAddressAnalogValues + (index * 2), 2);
+        AnalogValue(index: number): number {
+            const buffer = this.I2cRead(kMemoryAddressAnalogValues + (index * 2), 2);
             return buffer.getNumber(NumberFormat.UInt16LE, 0);
         }
 
@@ -140,8 +140,8 @@ namespace emakefun {
         //% index.min=0
         //% index.max=4
         //% weight=80
-        digitalValue(index: number): number {
-            const byte = this.i2cRead(kMemoryAddressDigitalValues, 1).getUint8(0);
+        DigitalValue(index: number): number {
+            const byte = this.I2cRead(kMemoryAddressDigitalValues, 1).getUint8(0);
             return (byte >> index) & 0x01;
         }
     }
