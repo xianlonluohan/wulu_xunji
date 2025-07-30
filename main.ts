@@ -36,9 +36,9 @@ namespace emakefun {
         private readonly i2c_address: number = undefined
 
         /**
-     * Constructor
-     * @param i2c_address I2C address of the module, default 0x50
-     */
+        * Constructor
+        * @param i2c_address I2C address of the module, default 0x50
+        */
         constructor(i2c_address: number = 0x50) {
             this.i2c_address = i2c_address;
         }
