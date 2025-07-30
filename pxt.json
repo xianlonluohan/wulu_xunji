@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Extension for Emakefun Five Line Tracker V3",
     "dependencies": {
-        "core": "*",
+        "core": "file:../pxt-core",
         "radio": "*",
         "microphone": "*"
     },
@@ -11,11 +11,9 @@
         "README.md",
         "main.blocks",
         "main.ts",
+        "test.ts",
         "_locales/zh/five_line_tracker_v3-jsdoc-strings.json",
         "_locales/zh/five_line_tracker_v3-strings.json"
-    ],
-    "testFiles": [
-        "test.ts"
     ],
     "public": true,
     "supportedTargets": [

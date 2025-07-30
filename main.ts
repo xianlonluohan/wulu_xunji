@@ -1,4 +1,4 @@
-//%block="Emakefun"
+//%block="emakefun"
 namespace emakefun {
     // I2C address of the Five Line Tracker module
     const kDefaultI2cAddress = 0x50;
@@ -36,9 +36,9 @@ namespace emakefun {
         private readonly i2c_address: number = undefined
 
         /**
-        * Constructor
-        * @param i2c_address I2C address of the module, default 0x50
-        */
+     * Constructor
+     * @param i2c_address I2C address of the module, default 0x50
+     */
         constructor(i2c_address: number = 0x50) {
             this.i2c_address = i2c_address;
         }
@@ -131,6 +131,24 @@ namespace emakefun {
         }
 
         /**
+        * Get all analog values as an array
+        */
+        //% block="$this get all analog values"
+        //% subcategory="FiveLineTrackerV3"
+        //% this.defl=five_line_tracker
+        //% weight=84
+        AllAnalogValues(): number[] {
+            const buffer = this.I2cRead(kMemoryAddressAnalogValues, kLineNumber * 2);
+            const values: number[] = [];
+
+            for (let i = 0; i < kLineNumber; i++) {
+                values.push(buffer.getNumber(NumberFormat.UInt16LE, i * 2));
+            }
+
+            return values;
+        }
+
+        /**
          * Read digital value of sensors
          * @param index The sensor index (0-4)
          */
@@ -143,6 +161,18 @@ namespace emakefun {
         DigitalValue(index: number): number {
             const byte = this.I2cRead(kMemoryAddressDigitalValues, 1).getUint8(0);
             return (byte >> index) & 0x01;
+        }
+
+        /**
+         * Get all digital values as a byte
+         * 
+         */
+        //% block="$this get all digital values"
+        //% subcategory="FiveLineTrackerV3"
+        //% this.defl=five_line_tracker
+        //% weight=79
+        AllDigitalValues(): number {
+            return this.I2cRead(kMemoryAddressDigitalValues, 1).getUint8(0);
         }
     }
 }
