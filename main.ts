@@ -82,7 +82,9 @@ namespace emakefun {
         setHighThreshold(index: number, threshold: number): void {
             // pins.i2cWriteBuffer(this.i2c_address, pins.pack("<BH", [FiveLineTracker.kMemoryAddressHighThresholds + (index * 2), threshold]));
             const register = FiveLineTracker.kMemoryAddressHighThresholds + (index * 2);
-            const buffer = pins.pack("<BH", [register, threshold]);
+            const buffer = pins.createBuffer(3);
+            buffer.setUint8(0, register);
+            buffer.setUint16(1, threshold, true); // true表示小端序
             pins.i2cWriteBuffer(this.i2c_address, buffer);
 
         }
@@ -104,7 +106,9 @@ namespace emakefun {
         setLowThreshold(index: number, threshold: number): void {
             // pins.i2cWriteBuffer(this.i2c_address, pins.pack("<BH", [FiveLineTracker.kMemoryAddressLowThresholds + (index * 2), threshold]));
             const register = FiveLineTracker.kMemoryAddressLowThresholds + (index * 2);
-            const buffer = pins.pack("<BH", [register, threshold]);
+            const buffer = pins.createBuffer(3);
+            buffer.setUint8(0, register);
+            buffer.setUint16(1, threshold, true); // true表示小端序
             pins.i2cWriteBuffer(this.i2c_address, buffer);
         }
 
