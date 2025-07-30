@@ -48,14 +48,6 @@ namespace emakefun {
             return pins.i2cReadBuffer(this.i2c_address, length);
         }
 
-        I2cWrite(register: number, data: number[]): void {
-            let buffer = pins.createBuffer(data.length + 1);
-            buffer.setUint8(0, register);
-            for (let i = 0; i < data.length; i++) {
-                buffer.setUint8(i + 1, data[i]);
-            }
-            pins.i2cWriteBuffer(this.i2c_address, buffer);
-        }
 
         /**
          * Get the device ID
@@ -93,10 +85,12 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=90
         SetHighThreshold(index: number, threshold: number): void {
-            // Convert threshold to little-endian bytes
-            const lowByte = threshold & 0xFF;
-            const highByte = (threshold >> 8) & 0xFF;
-            this.I2cWrite(kMemoryAddressHighThresholds + (index * 2), [lowByte, highByte]);
+            const buffer = pins.createBuffer(3);
+            buffer.setUint8(0, kMemoryAddressHighThresholds + (index * 2)); // 寄存器地址
+            buffer.setUint8(1, threshold & 0xFF);  // 低字节
+            buffer.setUint8(2, threshold >> 8);    // 高字节
+            pins.i2cWriteBuffer(this.i2c_address, buffer);
+
         }
 
 
@@ -114,10 +108,11 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=89
         SetLowThreshold(index: number, threshold: number): void {
-            // Convert threshold to little-endian bytes
-            const lowByte = threshold & 0xFF;
-            const highByte = (threshold >> 8) & 0xFF;
-            this.I2cWrite(kMemoryAddressLowThresholds + (index * 2), [lowByte, highByte]);
+            const buffer = pins.createBuffer(3);
+            buffer.setUint8(0, kMemoryAddressLowThresholds + (index * 2)); // 寄存器地址
+            buffer.setUint8(1, threshold & 0xFF);  // 低字节
+            buffer.setUint8(2, threshold >> 8);    // 高字节
+            pins.i2cWriteBuffer(this.i2c_address, buffer);
         }
 
         /**
@@ -132,7 +127,7 @@ namespace emakefun {
         //% weight=85
         AnalogValue(index: number): number {
             const buffer = this.I2cRead(kMemoryAddressAnalogValues + (index * 2), 2);
-            return (buffer.getUint8(1) << 8) | buffer.getUint8(0);
+            return buffer.getNumber(NumberFormat.UInt16LE, 0);
         }
 
         /**
@@ -147,9 +142,7 @@ namespace emakefun {
             const values: number[] = [];
 
             for (let i = 0; i < kLineNumber; i++) {
-                // Combine bytes (little-endian)
-                const value = (buffer.getUint8(i * 2 + 1) << 8) | buffer.getUint8(i * 2);
-                values.push(value);
+                values.push(buffer.getNumber(NumberFormat.UInt16LE, i * 2));
             }
 
             return values;
