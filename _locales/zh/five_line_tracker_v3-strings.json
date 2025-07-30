@@ -5,10 +5,8 @@
     "emakefun.FiveLineTracker.SetHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
     "emakefun.FiveLineTracker.SetLowThreshold|block": "%this 设置传感器探头%index号的低阈值为 %threshold",
     "emakefun.FiveLineTracker.AnalogValue|block": "%this 读取传感器探头%index号的模拟值",
-    "emakefun.FiveLineTracker.AllAnalogValues|block": "%this 读取传感器所有探头的模拟值",
     "emakefun.FiveLineTracker.DigitalValue|block": "%this 读取传感器探头%index号的数字值",
-    "emakefun.FiveLineTracker.AllDigitalValues|block": "%this 读取传感器所有探头的数字值",
-    "emakefun|block": "emakefun",
-    "{id:category}Emakefun": "emakefun",
+    "emakefun|block": "Emakefun",
+    "{id:category}Emakefun": "Emakefun",
     "{id:subcategory}FiveLineTrackerV3": "五路寻迹模块"
 }
