@@ -1,3 +1,7 @@
+# Emakefun Five Line Tracker Extension
+
+> Open this page at [https://emakefun.github.io/five-line-tracker/](https://emakefun.github.io/five-line-tracker/)
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
@@ -19,3 +23,11 @@ To edit this repository in MakeCode.
 
 * Read analog and digital values from all 5 sensors
 * Set individual high/low thresholds
+* Calculate line position
+* Detect center line
+
+#### Metadata (used for search, rendering)
+
+* for PXT/microbit
+
+<script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
