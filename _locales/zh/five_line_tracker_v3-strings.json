@@ -1,11 +1,11 @@
 {
-    "emakefun.CreateFiveLineTracker|block": "创建五路寻迹传模块实例 I2C地址 $i2c_address",
-    "emakefun.FiveLineTracker.GetDeviceId|block": "%this 获取设备ID",
-    "emakefun.FiveLineTracker.GetFirmwareVersion|block": "%this 获取固件版本",
-    "emakefun.FiveLineTracker.SetHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
-    "emakefun.FiveLineTracker.SetLowThreshold|block": "%this 设置传感器探头%index号的低阈值为 %threshold",
-    "emakefun.FiveLineTracker.AnalogValue|block": "%this 读取传感器探头%index号的模拟值",
-    "emakefun.FiveLineTracker.DigitalValue|block": "%this 读取传感器探头%index号的数字值",
+    "emakefun.createFiveLineTracker|block": "创建五路寻迹传模块实例 I2C地址 $i2c_address",
+    "emakefun.FiveLineTracker.getDeviceId|block": "%this 获取设备ID",
+    "emakefun.FiveLineTracker.getFirmwareVersion|block": "%this 获取固件版本",
+    "emakefun.FiveLineTracker.setHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
+    "emakefun.FiveLineTracker.setLowThreshold|block": "%this 设置传感器探头%index号的低阈值为 %threshold",
+    "emakefun.FiveLineTracker.analogValue|block": "%this 读取传感器探头%index号的模拟值",
+    "emakefun.FiveLineTracker.digitalValue|block": "%this 读取传感器探头%index号的数字值",
     "emakefun|block": "Emakefun",
     "{id:category}Emakefun": "Emakefun",
     "{id:subcategory}FiveLineTrackerV3": "五路寻迹模块"
