@@ -10,6 +10,7 @@
     "files": [
         "README.md",
         "main.ts",
+        "main.blocks",
         "_locales/zh/five_line_tracker_v3-jsdoc-strings.json",
         "_locales/zh/five_line_tracker_v3-strings.json"
     ],
