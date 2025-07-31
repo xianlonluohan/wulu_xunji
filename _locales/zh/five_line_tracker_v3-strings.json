@@ -1,5 +1,5 @@
 {
-    "emakefun.CreateFiveLineTracker|block": "创建五路寻迹V3模块实例 I2C地址 $i2c_address",
+    "emakefun.createFiveLineTracker|block": "创建五路寻迹V3模块实例 I2C地址 $i2c_address",
     "emakefun.FiveLineTracker.getDeviceId|block": "%this 获取设备ID",
     "emakefun.FiveLineTracker.getFirmwareVersion|block": "%this 获取固件版本",
     "emakefun.FiveLineTracker.setHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
