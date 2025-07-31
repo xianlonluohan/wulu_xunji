@@ -1,38 +1,16 @@
-/// <reference path="main.ts" />
-let tracker = emakefun.createFiveLineTrackerV3(0x50)
-
+let five_line_tracker_v3 = emakefun.createFiveLineTrackerV3(80)
+for (let index = 0; index <= 4; index++) {
+    five_line_tracker_v3.setHighThreshold(index, 1000)
+    five_line_tracker_v3.setLowThreshold(index, 200)
+}
 basic.forever(function () {
-    serial.writeLine("=== equipment information ===")
-    serial.writeString("device ID: 0x")
-    serial.writeNumber(tracker.getDeviceId())
-    serial.writeString(", firmware version: v")
-    serial.writeNumber(tracker.getFirmwareVersion())
-    serial.writeLine("")
-
-    for (let i = 0; i < 5; i++) {
-        tracker.setHighThreshold(i, 1000)
-        tracker.setLowThreshold(i, 250)
+    basic.showString("" + (five_line_tracker_v3.getDeviceId()))
+    basic.showString("" + (five_line_tracker_v3.getFirmwareVersion()))
+    for (let index = 0; index <= 4; index++) {
+        basic.showString("" + (five_line_tracker_v3.analogValue(index)))
     }
-
-    while (true) {
-        serial.writeLine("=== sensor data ===")
-
-        serial.writeString("digital values:")
-        for (let i = 0; i < 5; i++) {
-            serial.writeNumber(tracker.digitalValue(i))
-            if (i < 4) {
-                serial.writeString(", ")
-            }
-        }
-
-        serial.writeString(", analog values:")
-        for (let i = 0; i < 5; i++) {
-            serial.writeNumber(tracker.analogValue(i))
-            if (i < 4) {
-                serial.writeString(", ")
-            }
-        }
-        serial.writeLine("")
-        basic.pause(200)
+    for (let index = 0; index <= 4; index++) {
+        basic.showString("" + (five_line_tracker_v3.digitalValue(index)))
     }
+    basic.pause(200)
 })
