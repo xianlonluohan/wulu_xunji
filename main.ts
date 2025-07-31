@@ -125,8 +125,7 @@ namespace emakefun {
         //% weight=80
         digitalValue(index: number): number {
             pins.i2cWriteNumber(this.i2c_address, FiveLineTrackerV3.kMemoryAddressDigitalValues, NumberFormat.UInt8LE);
-            const byte = pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
-            return (byte >> index) & 0x01;
+            return (pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false) >> index) & 0x01;
         }
     }
 }
