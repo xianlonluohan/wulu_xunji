@@ -1,26 +1,39 @@
 /// <reference path="main.ts" />
-let tracker = emakefun.createFiveLineTracker(80)
+let tracker = emakefun.createFiveLineTracker(0x50)
+
 basic.forever(function () {
-    serial.writeString('digital values:')
-    serial.writeNumber(tracker.digitalValue(0))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.digitalValue(1))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.digitalValue(2))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.digitalValue(3))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.digitalValue(4))
-    serial.writeString(', analog values:')
-    serial.writeNumber(tracker.analogValue(0))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.analogValue(1))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.analogValue(2))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.analogValue(3))
-    serial.writeString(', ')
-    serial.writeNumber(tracker.analogValue(4))
-    serial.writeLine('')
-    basic.pause(100)
+    serial.writeLine("=== 设备信息 ===")
+    serial.writeString("设备ID: 0x")
+    serial.writeNumber(tracker.getDeviceId())
+    serial.writeString(" | 固件版本: v")
+    serial.writeNumber(tracker.getFirmwareVersion())
+    serial.writeLine("")
+
+    for (let i = 0; i < 5; i++) {
+        tracker.setHighThreshold(i, 1000)
+        tracker.setLowThreshold(i, 250)
+    }
+
+    while (true) {
+        serial.writeLine("=== 传感器数据 ===")
+
+        serial.writeString("数字值: [")
+        for (let i = 0; i < 5; i++) {
+            serial.writeNumber(tracker.digitalValue(i))
+            if (i < 4) {
+                serial.writeString(", ")
+            }
+        }
+
+        serial.writeString("] | 模拟值: [")
+        for (let i = 0; i < 5; i++) {
+            serial.writeNumber(tracker.analogValue(i))
+            if (i < 4) {
+                serial.writeString(", ")
+            }
+        }
+        serial.writeLine("]")
+
+        basic.pause(500)
+    }
 })

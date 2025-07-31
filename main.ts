@@ -4,11 +4,11 @@ namespace emakefun {
     const kDefaultI2cAddress = 0x50;
 
     /**
-     * Create a new FiveLineTracker instance
+     * Create a new FiveLineTracker V3 instance
      * @param i2c_address I2C address of the module, default 0x50
      * @return The new FiveLineTracker object
     */
-    //% block="create five line tracker with I2C address $i2c_address"
+    //% block="create five line tracker V3 with I2C address $i2c_address"
     //% subcategory="FiveLineTrackerV3"
     //% blockSetVariable=five_line_tracker
     //% i2c_address.defl=0x50
@@ -38,11 +38,6 @@ namespace emakefun {
             this.i2c_address = i2c_address;
         }
 
-        i2cRead(register: number, length: number): Buffer {
-            pins.i2cWriteNumber(this.i2c_address, register, NumberFormat.UInt8LE);
-            return pins.i2cReadBuffer(this.i2c_address, length);
-        }
-
         /**
          * Get the device ID
          */
@@ -51,7 +46,8 @@ namespace emakefun {
         //% this.defl=five_line_tracker
         //% weight=95
         getDeviceId(): number {
-            return this.i2cRead(FiveLineTracker.kMemoryAddressDeviceId, 1).getUint8(0);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressDeviceId, NumberFormat.UInt8LE);
+            return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
         }
 
         /**
@@ -62,7 +58,8 @@ namespace emakefun {
         //% this.defl=five_line_tracker
         //% weight=94
         getFirmwareVersion(): number {
-            return this.i2cRead(FiveLineTracker.kMemoryAddressVersion, 1).getUint8(0);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressVersion, NumberFormat.UInt8LE);
+            return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
         }
 
         /**
@@ -112,8 +109,8 @@ namespace emakefun {
         //% index.max=4
         //% weight=85
         analogValue(index: number): number {
-            const buffer = this.i2cRead(FiveLineTracker.kMemoryAddressAnalogValues + (index * 2), 2);
-            return buffer.getNumber(NumberFormat.UInt16LE, 0);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressAnalogValues + (index * 2), NumberFormat.UInt8LE);
+            return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt16LE, false);
         }
 
         /**
@@ -127,7 +124,8 @@ namespace emakefun {
         //% index.max=4
         //% weight=80
         digitalValue(index: number): number {
-            const byte = this.i2cRead(FiveLineTracker.kMemoryAddressDigitalValues, 1).getUint8(0);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressDigitalValues, NumberFormat.UInt8LE);
+            const byte = pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
             return (byte >> index) & 0x01;
         }
     }
