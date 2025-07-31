@@ -13,7 +13,7 @@ namespace emakefun {
     //% blockSetVariable=five_line_tracker_v3
     //% i2c_address.defl=0x50
     //% weight=100
-    export function createFiveLineTracker(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
+    export function createFiveLineTrackerV3(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
         return new FiveLineTracker(i2c_address);
     }
 

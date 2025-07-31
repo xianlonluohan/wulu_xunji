@@ -21,7 +21,7 @@ basic.forever(function () {
         for (let i = 0; i < 5; i++) {
             serial.writeNumber(tracker.digitalValue(i))
             if (i < 4) {
-                serial.writeString(', ')
+                serial.writeString(", ")
             }
         }
 
@@ -29,7 +29,7 @@ basic.forever(function () {
         for (let i = 0; i < 5; i++) {
             serial.writeNumber(tracker.analogValue(i))
             if (i < 4) {
-                serial.writeString(', ')
+                serial.writeString(", ")
             }
         }
         serial.writeLine("")

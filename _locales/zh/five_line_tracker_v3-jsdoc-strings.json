@@ -11,6 +11,6 @@
     "emakefun.FiveLineTracker.analogValue|param|index": "传感器编号 (0-4)",
     "emakefun.FiveLineTracker.digitalValue": "获取传感器数字值",
     "emakefun.FiveLineTracker.digitalValue|param|index": "传感器编号 (0-4)",
-    "emakefun.createFiveLineTracker": "创建五路寻迹V3模块实例",
-    "emakefun.createFiveLineTracker|param|i2c_address": "I2C地址 (默认0x50)"
+    "emakefun.createFiveLineTrackerV3": "创建五路寻迹V3模块实例",
+    "emakefun.createFiveLineTrackerV3|param|i2c_address": "I2C地址 (默认0x50)"
 }
