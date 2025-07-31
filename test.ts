@@ -2,10 +2,10 @@
 let tracker = emakefun.createFiveLineTracker(0x50)
 
 basic.forever(function () {
-    serial.writeLine("=== 设备信息 ===")
-    serial.writeString("设备ID: 0x")
+    serial.writeLine("=== equipment information ===")
+    serial.writeString("device ID: 0x")
     serial.writeNumber(tracker.getDeviceId())
-    serial.writeString(" | 固件版本: v")
+    serial.writeString(", firmware version: v")
     serial.writeNumber(tracker.getFirmwareVersion())
     serial.writeLine("")
 
@@ -15,25 +15,24 @@ basic.forever(function () {
     }
 
     while (true) {
-        serial.writeLine("=== 传感器数据 ===")
+        serial.writeLine("=== sensor data ===")
 
-        serial.writeString("数字值: [")
+        serial.writeString("digital values:")
         for (let i = 0; i < 5; i++) {
             serial.writeNumber(tracker.digitalValue(i))
             if (i < 4) {
-                serial.writeString(", ")
+                serial.writeString(', ')
             }
         }
 
-        serial.writeString("] | 模拟值: [")
+        serial.writeString(", analog values:")
         for (let i = 0; i < 5; i++) {
             serial.writeNumber(tracker.analogValue(i))
             if (i < 4) {
-                serial.writeString(", ")
+                serial.writeString(', ')
             }
         }
-        serial.writeLine("]")
-
-        basic.pause(500)
+        serial.writeLine("")
+        basic.pause(200)
     }
 })

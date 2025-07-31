@@ -10,7 +10,7 @@ namespace emakefun {
     */
     //% block="create five line tracker V3 with I2C address $i2c_address"
     //% subcategory="FiveLineTrackerV3"
-    //% blockSetVariable=five_line_tracker
+    //% blockSetVariable=five_line_tracker_v3
     //% i2c_address.defl=0x50
     //% weight=100
     export function createFiveLineTracker(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
@@ -43,7 +43,7 @@ namespace emakefun {
          */
         //% block="$this get the device ID"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% weight=95
         getDeviceId(): number {
             pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressDeviceId, NumberFormat.UInt8LE);
@@ -55,7 +55,7 @@ namespace emakefun {
          */
         //% block="$this get the firmware version"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% weight=94
         getFirmwareVersion(): number {
             pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressVersion, NumberFormat.UInt8LE);
@@ -69,7 +69,7 @@ namespace emakefun {
         */
         //% block="$this set high threshold for sensor $index to $threshold"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% index.min=0
         //% index.max=4
         //% threshold.min=0
@@ -87,7 +87,7 @@ namespace emakefun {
          */
         //% block="$this set low threshold for sensor $index to $threshold"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% index.min=0
         //% index.max=4
         //% threshold.min=0
@@ -104,7 +104,7 @@ namespace emakefun {
          */
         //% block="$this get the analog value for channel $index"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% index.min=0
         //% index.max=4
         //% weight=85
@@ -119,7 +119,7 @@ namespace emakefun {
          */
         //% block="$this get the digital value for channel $index"
         //% subcategory="FiveLineTrackerV3"
-        //% this.defl=five_line_tracker
+        //% this.defl=five_line_tracker_v3
         //% index.min=0
         //% index.max=4
         //% weight=80
