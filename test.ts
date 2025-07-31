@@ -1,5 +1,5 @@
 /// <reference path="main.ts" />
-let tracker = emakefun.createFiveLineTracker(0x50)
+let tracker = emakefun.createFiveLineTrackerV3(0x50)
 
 basic.forever(function () {
     serial.writeLine("=== equipment information ===")

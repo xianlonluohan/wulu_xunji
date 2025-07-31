@@ -1,11 +1,11 @@
 {
     "emakefun.createFiveLineTrackerV3|block": "创建五路寻迹V3模块实例 I2C地址 $i2c_address",
-    "emakefun.FiveLineTracker.getDeviceId|block": "%this 获取设备ID",
-    "emakefun.FiveLineTracker.getFirmwareVersion|block": "%this 获取固件版本",
-    "emakefun.FiveLineTracker.setHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
-    "emakefun.FiveLineTracker.setLowThreshold|block": "%this 设置传感器探头%index号的低阈值为 %threshold",
-    "emakefun.FiveLineTracker.analogValue|block": "%this 读取传感器探头%index号的模拟值",
-    "emakefun.FiveLineTracker.digitalValue|block": "%this 读取传感器探头%index号的数字值",
+    "emakefun.FiveLineTrackerV3.getDeviceId|block": "%this 获取设备ID",
+    "emakefun.FiveLineTrackerV3.getFirmwareVersion|block": "%this 获取固件版本",
+    "emakefun.FiveLineTrackerV3.setHighThreshold|block": "%this 设置传感器探头%index号的高阈值为 %threshold",
+    "emakefun.FiveLineTrackerV3.setLowThreshold|block": "%this 设置传感器探头%index号的低阈值为 %threshold",
+    "emakefun.FiveLineTrackerV3.analogValue|block": "%this 读取传感器探头%index号的模拟值",
+    "emakefun.FiveLineTrackerV3.digitalValue|block": "%this 读取传感器探头%index号的数字值",
     "emakefun|block": "Emakefun",
     "{id:category}Emakefun": "Emakefun",
     "{id:subcategory}FiveLineTrackerV3": "五路寻迹V3模块"

@@ -4,23 +4,23 @@ namespace emakefun {
     const kDefaultI2cAddress = 0x50;
 
     /**
-     * Create a new FiveLineTracker V3 instance
+     * Create a new FiveLineTrackerV3 instance
      * @param i2c_address I2C address of the module, default 0x50
-     * @return The new FiveLineTracker object
+     * @return The new FiveLineTrackerV3 object
     */
     //% block="create five line tracker V3 with I2C address $i2c_address"
     //% subcategory="FiveLineTrackerV3"
     //% blockSetVariable=five_line_tracker_v3
     //% i2c_address.defl=0x50
     //% weight=100
-    export function createFiveLineTrackerV3(i2c_address: number = kDefaultI2cAddress): FiveLineTracker {
-        return new FiveLineTracker(i2c_address);
+    export function createFiveLineTrackerV3(i2c_address: number = kDefaultI2cAddress): FiveLineTrackerV3 {
+        return new FiveLineTrackerV3(i2c_address);
     }
 
     /**
-     * FiveLineTracker class
+     * FiveLineTrackerV3 class
      */
-    export class FiveLineTracker {
+    export class FiveLineTrackerV3 {
         private static readonly kMemoryAddressDeviceId = 0x00;
         private static readonly kMemoryAddressVersion = 0x01;
         private static readonly kMemoryAddressAnalogValues = 0x10;
@@ -46,7 +46,7 @@ namespace emakefun {
         //% this.defl=five_line_tracker_v3
         //% weight=95
         getDeviceId(): number {
-            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressDeviceId, NumberFormat.UInt8LE);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTrackerV3.kMemoryAddressDeviceId, NumberFormat.UInt8LE);
             return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
         }
 
@@ -58,7 +58,7 @@ namespace emakefun {
         //% this.defl=five_line_tracker_v3
         //% weight=94
         getFirmwareVersion(): number {
-            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressVersion, NumberFormat.UInt8LE);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTrackerV3.kMemoryAddressVersion, NumberFormat.UInt8LE);
             return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
         }
 
@@ -76,7 +76,7 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=90
         setHighThreshold(index: number, threshold: number): void {
-            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTracker.kMemoryAddressHighThresholds + index * 2, threshold]));
+            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTrackerV3.kMemoryAddressHighThresholds + index * 2, threshold]));
         }
 
 
@@ -94,7 +94,7 @@ namespace emakefun {
         //% threshold.max=1023
         //% weight=89
         setLowThreshold(index: number, threshold: number): void {
-            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTracker.kMemoryAddressLowThresholds + index * 2, threshold]));
+            pins.i2cWriteBuffer(this.i2c_address, Buffer.pack("<BH", [FiveLineTrackerV3.kMemoryAddressLowThresholds + index * 2, threshold]));
 
         }
 
@@ -109,7 +109,7 @@ namespace emakefun {
         //% index.max=4
         //% weight=85
         analogValue(index: number): number {
-            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressAnalogValues + (index * 2), NumberFormat.UInt8LE);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTrackerV3.kMemoryAddressAnalogValues + (index * 2), NumberFormat.UInt8LE);
             return pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt16LE, false);
         }
 
@@ -124,7 +124,7 @@ namespace emakefun {
         //% index.max=4
         //% weight=80
         digitalValue(index: number): number {
-            pins.i2cWriteNumber(this.i2c_address, FiveLineTracker.kMemoryAddressDigitalValues, NumberFormat.UInt8LE);
+            pins.i2cWriteNumber(this.i2c_address, FiveLineTrackerV3.kMemoryAddressDigitalValues, NumberFormat.UInt8LE);
             const byte = pins.i2cReadNumber(this.i2c_address, NumberFormat.UInt8LE, false);
             return (byte >> index) & 0x01;
         }
